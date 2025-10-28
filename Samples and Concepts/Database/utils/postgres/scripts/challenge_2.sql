@@ -31,3 +31,5 @@ ORDER BY u.email, o.id;
 COMMIT;
 
 \echo '--- challenge_2.sql END ---'
+
+-- Run by using `make challenge_2` while in /postgres
