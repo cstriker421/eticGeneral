@@ -15,3 +15,9 @@ sql: ## Run scripts/insert_users_and_orders.sql script
 	docker compose exec db psql --username=user --dbname=db -f /scripts/insert_users_and_orders.sql
 
 restart: clean up ## Restart the containers
+
+challenge_1: ## Run scripts/challenge_1.sql script
+	docker compose exec db psql --username=user --dbname=db -f /scripts/challenge_1.sql
+
+challenge_2: ## Run scripts/challenge_2.sql script
+	docker compose exec db psql --username=user --dbname=db -f /scripts/challenge_2.sql

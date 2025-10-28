@@ -1,23 +1,30 @@
 services:
   db:
-    image: postgres
+    image: postgres:16
     restart: always
     ports:
       - 5432:5432
     volumes:
       - data:/var/lib/postgresql/data
-      - ./initdb.d:/docker-entrypoint-initdb.d
-      - ./scripts:/scripts
+      - ./initdb.d:/docker-entrypoint-initdb.d:Z
+      - ./scripts:/scripts:Z
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
       POSTGRES_DB: db
+    networks: [dbnet]
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 5433:8080
+    depends_on:
+      - db
+    networks: [dbnet]
 
 volumes:
   data:
+
+networks:
+  dbnet:
